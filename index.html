@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +48,7 @@ button:active {
 }
 
 #surprise {
-    margin-top: 30px;
+    margin-top: 25px;
     display: none;
     animation: pop 0.6s ease forwards;
 }
@@ -62,6 +62,34 @@ button:active {
     font-size: 1.1rem;
     max-width: 320px;
     line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.smile-text {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.arrow {
+    font-size: 2rem;
+    margin-top: 10px;
+    cursor: pointer;
+    display: none;
+    user-select: none;
+    transition: 0.2s;
+}
+
+.arrow:hover {
+    transform: scale(1.2);
+}
+
+.carousel {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    max-width: 320px;
+    display: none;
+    line-height: 1.5;
 }
 
 @keyframes pop {
@@ -94,19 +122,47 @@ button:active {
     <div class="icons">🧸 💍 🌹</div>
 
     <div class="love-text">
-        Baby, pehla Valentine hai humara… 💖  
-        Par mera iraada aakhri tak saath nibhaane ka hai.  
-
-        Madhu…  
-        Kya tum meri zindagi ki har khushi,  
-        har sapna,  
+        Baby, pehla Valentine hai humara… 💖<br>
+        Par mera iraada aakhri tak saath nibhaane ka hai.<br><br>
+        Madhu…<br>
+        Kya tum meri zindagi ki har khushi,<br>
+        har sapna,<br>
         aur har Valentine hamesha ke liye banogi? 💍❤️
     </div>
+
+    <div class="smile-text">
+        Bas yuhi muskurate rahiyega... 😊
+    </div>
+
+    <div class="arrow" onclick="nextShayari()">➡️</div>
+
+    <div class="carousel" id="shayariBox"></div>
 </div>
 
 <script>
+// Show surprise elements
 function showSurprise() {
     document.getElementById("surprise").style.display = "block";
+    document.querySelector(".arrow").style.display = "block";
+}
+
+// Shayari array
+const shayari = [
+    "Tum paas ho toh har din khaas hai, tum nahi toh sab bekaar sa hai. 🌹",
+    "Mohabbat sirf lafzon se nahi hoti, tumhari fikr se hoti hai. 💖",
+    "Har dua mein tumhara naam aata hai, kyunki dil sirf tumhe hi chahta hai. 💍",
+    "Tum saath ho toh har gham halka sa lagta hai, tum door ho toh sab adhoora sa lagta hai. 💞",
+    "Tumhari hasi meri sabse badi daulat hai, tum khush ho toh meri duniya khoobsurat hai. 🌸",
+    "Tum meri aadat bhi ho aur zaroorat bhi, tum bin adhoori meri har khushi bhi. ❤️"
+];
+
+let index = 0;
+
+function nextShayari() {
+    const box = document.getElementById("shayariBox");
+    box.style.display = "block";
+    box.innerHTML = shayari[index];
+    index = (index + 1) % shayari.length;
 }
 
 // Floating hearts
