@@ -3,130 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our First Valentine ❤️</title>
+<title>Happy First Valentine Madhu ❤️</title>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Segoe UI', cursive;
-        background: linear-gradient(135deg, #ff4e8a, #ff9a9e);
-        overflow: hidden;
-        text-align: center;
-        color: white;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    h1 {
-        margin-top: 80px;
-        font-size: 3rem;
-        animation: glow 2s ease-in-out infinite alternate;
-    }
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ff4e8a, #ff9a9e);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+    padding: 20px;
+}
 
-    p {
-        font-size: 1.4rem;
-        max-width: 600px;
-        margin: 20px auto;
-        line-height: 1.6;
-    }
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+}
 
-    @keyframes glow {
-        from { text-shadow: 0 0 10px #fff; }
-        to { text-shadow: 0 0 25px #fff, 0 0 40px #ffdde1; }
-    }
+button {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4e8a;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
 
-    .btn {
-        margin-top: 30px;
-        padding: 15px 30px;
-        font-size: 1.2rem;
-        border: none;
-        border-radius: 30px;
-        background-color: white;
-        color: #ff4e8a;
-        cursor: pointer;
-        transition: 0.3s ease;
-    }
+button:active {
+    transform: scale(0.95);
+}
 
-    .btn:hover {
-        background-color: #ffe6ec;
-        transform: scale(1.1);
-    }
+#surprise {
+    margin-top: 35px;
+    font-size: 4rem;
+    display: none;
+    animation: pop 0.6s ease forwards;
+}
 
-    #surprise {
-        margin-top: 20px;
-        font-size: 1.5rem;
-        display: none;
-        animation: fadeIn 2s ease forwards;
-    }
+@keyframes pop {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp linear forwards;
+}
 
-    /* Floating Hearts */
-    .heart {
-        position: absolute;
-        bottom: -50px;
-        font-size: 24px;
-        animation: float 8s linear infinite;
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
     }
-
-    @keyframes float {
-        0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100vh) rotate(360deg);
-            opacity: 0;
-        }
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
     }
+}
 </style>
 </head>
 
 <body>
 
-<h1>Happy First Valentine’s Day ❤️</h1>
+<h1>Happy First Valentine Madhu ❤️</h1>
 
-<p>
-My Love,  
-This is our very first Valentine’s together,  
-and I promise you… it’s just the beginning of a lifetime of love, laughter,  
-and beautiful memories.  
-
-You are my heart, my happiness, and my forever. 💍  
-</p>
-
-<button class="btn" onclick="showLove()">Click for a Surprise 💖</button>
+<button onclick="showSurprise()">Tap for Surprise 🎁</button>
 
 <div id="surprise">
-    Will you be my forever Valentine? ❤️  
-    I love you endlessly!
+    🧸 💍 🌹
 </div>
 
-<!-- Background Music (Replace with your special song link) -->
-<audio autoplay loop>
-    <source src="your-song.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-function showLove() {
+function showSurprise() {
     document.getElementById("surprise").style.display = "block";
 }
 
-// Create floating hearts
+// Floating hearts generator
 function createHeart() {
     const heart = document.createElement("div");
-    heart.classList.add("heart");
+    heart.className = "heart";
     heart.innerHTML = "❤️";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-    heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+    heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
     document.body.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
-    }, 8000);
+    }, 7000);
 }
 
 setInterval(createHeart, 300);
