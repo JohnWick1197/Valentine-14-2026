@@ -86,12 +86,19 @@ button:active {
 
 .carousel {
     margin-top: 20px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     max-width: 320px;
+    max-height: 120px;           /* Scrollable height */
     display: none;
-    line-height: 1.5;
+    line-height: 1.6;
+    overflow-y: auto;            /* Scrollbar */
+    padding: 10px;
+    background: rgba(255,255,255,0.2); /* Slight background for readability */
+    border-radius: 12px;
+    text-align: center;
 }
 
+/* Animations */
 @keyframes pop {
     0% { transform: scale(0); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
@@ -140,7 +147,7 @@ button:active {
 </div>
 
 <script>
-// Show surprise elements
+// Show surprise
 function showSurprise() {
     document.getElementById("surprise").style.display = "block";
     document.querySelector(".arrow").style.display = "block";
