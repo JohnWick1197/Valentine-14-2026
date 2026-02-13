@@ -1,30 +1,105 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For My Valentine ❤️</title>
+<meta charset="UTF-8">
+<title>Our First Valentine ❤️</title>
+
 <style>
 body {
-  background: #ff4d6d;
-  color: white;
+  margin: 0;
+  background: linear-gradient(to bottom, #1a001a, #330033);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
   text-align: center;
-  font-family: Arial;
-  padding-top: 100px;
+  color: white;
+}
+
+#teddy {
+  position: absolute;
+  bottom: 20px;
+  left: -200px;
+  width: 150px;
+  transition: left 5s linear;
+}
+
+#heart {
+  font-size: 50px;
+  cursor: pointer;
+  display: none;
+  margin-top: 40vh;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px pink; }
+  to { text-shadow: 0 0 30px red; }
+}
+
+#message {
+  display: none;
+  font-size: 22px;
+  padding: 20px;
+}
+
+#final {
+  display: none;
+  font-size: 26px;
+  margin-top: 20px;
 }
 button {
-  padding: 15px 30px;
+  padding: 12px 25px;
   font-size: 18px;
-  background: white;
-  color: #ff4d6d;
-  border: none;
   border-radius: 10px;
+  border: none;
+  background: pink;
+  cursor: pointer;
 }
 </style>
 </head>
+
 <body>
-<h1>Happy Valentine's Day ❤️</h1>
-<p>You make my world beautiful.</p>
-<button onclick="alert('I Love You ❤️')">
-Will You Be My Valentine?
-</button>
+
+<img id="teddy" src="https://i.imgur.com/9QZ7Z7Z.png">
+
+<div id="heart">❤️</div>
+
+<div id="message"></div>
+
+<div id="final">
+  <p>Will you be my forever Valentine, Mrs. Dwivedi? 💍</p>
+  <button onclick="alert('Forever starts today ❤️')">YES 💖</button>
+</div>
+
+<script>
+let teddy = document.getElementById("teddy");
+let heart = document.getElementById("heart");
+let message = document.getElementById("message");
+let final = document.getElementById("final");
+
+window.onload = function() {
+  teddy.style.left = "40%";
+  setTimeout(() => {
+    heart.style.display = "block";
+  }, 5000);
+}
+
+heart.onclick = function() {
+  heart.style.display = "none";
+  message.style.display = "block";
+  let text = "This is our first Valentine as fiancés... and I promise this is just the beginning of our forever. ❤️";
+  let i = 0;
+  let typing = setInterval(() => {
+    message.innerHTML += text.charAt(i);
+    i++;
+    if (i >= text.length) {
+      clearInterval(typing);
+      setTimeout(() => {
+        final.style.display = "block";
+      }, 1500);
+    }
+  }, 50);
+}
+</script>
+
 </body>
 </html>
